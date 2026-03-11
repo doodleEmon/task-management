@@ -16,6 +16,7 @@ import { useCreateTask } from "../hooks/useCreateTask"
 
 export default function CreateTaskDialog() {
     const { mutate, isPending } = useCreateTask()
+    const [open, setOpen] = useState<boolean>(false)
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
@@ -27,16 +28,16 @@ export default function CreateTaskDialog() {
                 onSuccess: () => {
                     setTitle("")
                     setBody("")
+                    setOpen(false)
                 }
             }
         )
     }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger>
-                + Add Task
-                {/* <Button variant="outline" size="lg">+ Add Task</Button> */}
+                <span className="border p-2 rounded ">+ Add Task</span>
             </DialogTrigger>
 
             <DialogContent>

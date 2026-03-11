@@ -12,12 +12,19 @@ import {
 } from "@/components/ui/alert-dialog"
 
 import { useDeleteTask } from "../hooks/useDeleteTask"
+import { useState } from "react";
 
 export default function DeleteTaskDialog({ id, children }: any) {
-    const { mutate } = useDeleteTask()
+    const { mutate } = useDeleteTask();
+    const [open, setOpen] = useState(false)
+
+    const handleDelete = () => {
+        mutate(id);
+        setOpen(false);
+    }
 
     return (
-        <AlertDialog>
+        <AlertDialog open={open} onOpenChange={setOpen}>
             <AlertDialogTrigger>
                 {children}
             </AlertDialogTrigger>
@@ -31,7 +38,7 @@ export default function DeleteTaskDialog({ id, children }: any) {
 
                 <AlertDialogFooter>
                     <AlertDialogCancel>No</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => mutate(id)}>
+                    <AlertDialogAction onClick={handleDelete}>
                         Yes, Delete
                     </AlertDialogAction>
                 </AlertDialogFooter>

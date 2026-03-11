@@ -15,20 +15,28 @@ import { Button } from "@/components/ui/button"
 import { useUpdateTask } from "../hooks/useUpdateTask"
 
 export default function EditTaskDialog({ task, children }: any) {
-    const { mutate, isPending } = useUpdateTask()
+    const { mutate, isPending } = useUpdateTask();
 
-    const [title, setTitle] = useState(task.title)
-    const [body, setBody] = useState(task.body)
+    const [open, setOpen] = useState<boolean>(false);
+    const [title, setTitle] = useState(task.title);
+    const [body, setBody] = useState(task.body);
 
     const handleUpdate = () => {
-        mutate({
-            id: task.id,
-            data: { title, body }
-        })
+        mutate(
+            {
+                id: task.id,
+                data: { title, body }
+            },
+            {
+                onSuccess: () => {
+                    setOpen(false)
+                }
+            }
+        )
     }
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger>
                 {children}
             </DialogTrigger>
