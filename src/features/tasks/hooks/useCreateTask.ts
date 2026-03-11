@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createTask } from "../api/taskApi";
+import { toast } from "sonner";
 
 export const useCreateTask = () => {
     const queryClient = useQueryClient();
@@ -9,6 +10,12 @@ export const useCreateTask = () => {
 
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["tasks"] });
+
+            toast.success("Task created successfully");
+        },
+
+        onError: () => {
+            toast.error("Failed to create task");
         },
     });
 };

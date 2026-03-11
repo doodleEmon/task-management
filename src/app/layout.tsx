@@ -4,6 +4,7 @@ import "./globals.css";
 import HeaderComp from "@/components/Navbar";
 import SidebarComp from "@/components/Sidebar";
 import QueryProvider from "@/providers/QueryProvider";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,12 +29,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-(--color-background) text-(--color-text)`}
       >
         <QueryProvider>
           <div className="flex flex-col min-h-screen">
             <HeaderComp />
-            <div className="flex mt-16 h-[calc(100vh-4rem)] w-full text-[#2563eb]">
+            <div className="flex mt-16 h-[calc(100vh-4rem)] w-full">
               {/* Sidebar */}
               <div
                 className='border-gray-700 md:border-r 
@@ -45,6 +46,7 @@ export default function RootLayout({
               {/* Body */}
               <div className={`flex-1 overflow-y-scroll`}>
                 {children}
+                <Toaster position="top-right" richColors />
               </div>
             </div>
           </div>

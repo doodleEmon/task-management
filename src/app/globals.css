@@ -2,10 +2,18 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
+  --color-background: #1f2933; /* Deep Charcoal */
+  --color-card: #2b3643;
+  --color-primary: #3b82f6; /* Electric Blue */
+  --color-text: #e5e7eb;
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
@@ -33,11 +41,11 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
+
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
