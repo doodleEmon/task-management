@@ -16,7 +16,7 @@ export default function TaskTable() {
   if (error) return <p>Error loading tasks</p>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 lg:p-6">
       <CreateTaskDialog />
       <Table className="mt-10 table-fixed w-full">
         <TableHeader>
