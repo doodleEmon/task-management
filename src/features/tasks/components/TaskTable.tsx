@@ -19,10 +19,10 @@ export default function TaskTable() {
       <Table className="mt-10 table-fixed w-full">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[10%] pl-4 pr-2">Task Id</TableHead>
-            <TableHead className="w-[20%] px-2">Task title</TableHead>
-            <TableHead className="w-[50%] pl-10 pr-2">Task body</TableHead>
-            <TableHead className="w-[20%] pl-12">Action</TableHead>
+            <TableHead className="w-[10%] pl-4 pr-2 text-gray-400">Task Id</TableHead>
+            <TableHead className="w-[20%] px-2 text-gray-400">Task title</TableHead>
+            <TableHead className="w-[50%] pl-10 pr-2 text-gray-400">Task body</TableHead>
+            <TableHead className="w-[20%] pl-12 text-gray-400">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
