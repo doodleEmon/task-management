@@ -1,8 +1,9 @@
 'use client'
 
+import { LogOut, Settings, Settings2 } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { BiMessage } from 'react-icons/bi'
+import { BiMessage, BiTask } from 'react-icons/bi'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { ImCross } from 'react-icons/im'
 
@@ -15,9 +16,9 @@ export default function HeaderComp() {
         {/* Logo */}
         <Link href='/' className='flex items-center gap-x-2'>
           <div className='p-2 rounded bg-blue-500 flex items-center justify-center'>
-            <BiMessage size={20} className='text-white' />
+            <BiTask size={20} className='text-white' />
           </div>
-          <p className='text-xl font-semibold text-blue-300'>Chattyfy</p>
+          <p className='text-xl font-semibold text-blue-300'>Task Manager</p>
         </Link>
 
         {/* Desktop Menu */}
@@ -33,13 +34,13 @@ export default function HeaderComp() {
             </li>
             <li>
               <Link href='/settings' className='flex items-center gap-x-1 text-white hover:text-blue-300'>
-                <span>⚙️</span>
+                <span><Settings /></span>
                 <p>Settings</p>
               </Link>
             </li>
             <li>
               <button className='flex items-center gap-x-1 cursor-pointer text-white hover:text-blue-300' type='button'>
-                <span>🚪</span>
+                <span><LogOut /></span>
                 <p>Logout</p>
               </button>
             </li>
@@ -62,22 +63,33 @@ export default function HeaderComp() {
           <div className='flex items-center justify-between'>
             <Link href='/' className='flex items-center gap-x-2' onClick={() => setIsDrawerOpen(false)}>
               <div className='p-2 rounded bg-blue-500 flex items-center justify-center'>
-                <BiMessage size={20} className='text-white' />
+                <BiTask size={20} className='text-white' />
               </div>
-              <p className='text-xl font-semibold text-blue-300'>Chattyfy</p>
+              <p className='text-xl font-semibold text-blue-300'>Task Manager</p>
             </Link>
             <button className='cursor-pointer text-white' onClick={() => setIsDrawerOpen(false)}>
               <ImCross size={16} />
             </button>
           </div>
-          
+
           <hr className='mt-4 border-gray-700' />
-          
+
+          <ul className="flex flex-col gap-3 mt-2 p-2">
+            <Link
+              href={'/'}
+              onClick={() => setIsDrawerOpen(false)}
+            ><li className="bg-gray-700 p-2 font-bold rounded">Tasks</li></Link>
+            <Link
+              href={'/users'}
+              onClick={() => setIsDrawerOpen(false)}
+            ><li className="bg-gray-700 p-2 font-bold rounded">Users</li></Link>
+          </ul>
+
           <ul className='flex flex-col gap-y-4 mt-4 px-4'>
             <li>
-              <Link 
-                href='/profile' 
-                onClick={() => setIsDrawerOpen(false)} 
+              <Link
+                href='/profile'
+                onClick={() => setIsDrawerOpen(false)}
                 className='flex items-center gap-x-3 text-white hover:text-blue-300 py-2'
               >
                 <div className='size-8 bg-gray-600 rounded-full flex items-center justify-center'>
@@ -89,25 +101,29 @@ export default function HeaderComp() {
                 </div>
               </Link>
             </li>
-            
+
             <li className='pt-2'>
-              <Link 
-                href='/settings' 
-                onClick={() => setIsDrawerOpen(false)} 
+              <Link
+                href='/settings'
+                onClick={() => setIsDrawerOpen(false)}
                 className='flex items-center gap-x-3 text-white hover:text-blue-300 py-2'
               >
-                <span className='text-xl'>⚙️</span>
+                <span className='text-xl'>
+                  <Settings />
+                </span>
                 <span>Settings</span>
               </Link>
             </li>
-            
+
             <li>
-              <button 
-                onClick={() => setIsDrawerOpen(false)} 
+              <button
+                onClick={() => setIsDrawerOpen(false)}
                 className='flex items-center gap-x-3 text-white hover:text-blue-300 py-2 w-full text-left'
                 type='button'
               >
-                <span className='text-xl'>🚪</span>
+                <span className='text-xl'>
+                  <LogOut />
+                </span>
                 <span>Logout</span>
               </button>
             </li>
