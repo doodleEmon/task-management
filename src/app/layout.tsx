@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import HeaderComp from "@/components/Navbar";
+import SidebarComp from "@/components/Sidebar";
+import QueryProvider from "@/providers/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +30,25 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <QueryProvider>
+          <div className="flex flex-col min-h-screen">
+            <HeaderComp />
+            <div className="flex mt-16 h-[calc(100vh-4rem)] w-full text-[#2563eb]">
+              {/* Sidebar */}
+              <div
+                className='border-gray-700 md:border-r 
+          hidden md:block md:w-[20%]'
+              >
+                <SidebarComp />
+              </div>
+
+              {/* Body */}
+              <div className={`flex-1 overflow-y-scroll`}>
+                {children}
+              </div>
+            </div>
+          </div>
+        </QueryProvider>
       </body>
     </html>
   );
